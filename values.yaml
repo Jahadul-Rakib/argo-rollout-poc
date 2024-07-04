@@ -49,3 +49,16 @@ secret:
   values:
     additionalProp1: test-one
     additionalProp2: test-two
+ingress:
+  hosts:
+    - host: "rollout-test.95.216.201.183.nip.io"
+      paths:
+        - path: "/"
+          port: 80
+          path_type: "ImplementationSpecific"
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/backend-protocol: HTTP
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: "60"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "60"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "60"
