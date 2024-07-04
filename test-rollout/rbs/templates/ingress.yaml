@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+  labels:
+    additionalProp1: label1
+    additionalProp2: label2
+    additionalProp3: label3
+    app.kubernetes.io/instance: test11
+  name: ingress-test-nginx-rb
+  namespace: default
+spec:
+  rules:
+    - host: rollout-test.95.216.201.183.nip.io
+      http:
+        paths:
+          - backend:
+              service:
+                name: {{ include "hello-world.fullname" . }}
+                port:
+                  number: 80
+            path: /
+            pathType: ImplementationSpecific
+status:
+  loadBalancer: { }
