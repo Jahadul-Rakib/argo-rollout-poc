@@ -8,7 +8,7 @@ deployment:
   container:
   - configmaps:
     - test-rnd-configmap
-    container_image: rafsnil/application-v12:latest
+    container_image: rafsnil/application-v12:dccb75bf228648fca6ea
     container_name: basic-api
     image_pull_policy: Always
     ports:
