@@ -19,6 +19,8 @@ spec:
         - pause: { duration: 10 }
         - setWeight: 80
         - pause: { duration: 10 }
+        - setWeight: 100
+        - pause: { }
       stableService: service-{{ .Values.deployment.name }}
       canaryService: service-{{ .Values.deployment.name }}-rollout
       trafficRouting:
