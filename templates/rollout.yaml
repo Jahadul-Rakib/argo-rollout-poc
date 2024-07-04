@@ -1,12 +1,12 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Rollout
-metadata:
-  name: {{ .Values.deployment.name }}
-  namespace: {{ .Values.deployment.namespace }}
-spec:
-  revisionHistoryLimit: 20
-  strategy:
-    canary:
+{{/*apiVersion: argoproj.io/v1alpha1*/}}
+{{/*kind: Rollout*/}}
+{{/*metadata:*/}}
+{{/*  name: {{ .Values.deployment.name }}*/}}
+{{/*  namespace: {{ .Values.deployment.namespace }}*/}}
+{{/*spec:*/}}
+{{/*  revisionHistoryLimit: 20*/}}
+{{/*  strategy:*/}}
+{{/*    canary:*/}}
 {{/*      steps:*/}}
 {{/*        - setWeight: 20*/}}
 {{/*        - pause: { }*/}}
@@ -17,8 +17,8 @@ spec:
 {{/*        - setWeight: 80*/}}
 {{/*        - pause: { duration: 10 }*/}}
 {{/*        - setWeight: 100*/}}
-      stableService: service-{{ .Values.deployment.name }}
-      canaryService: service-{{ .Values.deployment.name }}-rollout
-      trafficRouting:
-        nginx:
-          stableIngress: ingress-{{ .Values.deployment.name }}
+{{/*      stableService: service-{{ .Values.deployment.name }}*/}}
+{{/*      canaryService: service-{{ .Values.deployment.name }}-rollout*/}}
+{{/*      trafficRouting:*/}}
+{{/*        nginx:*/}}
+{{/*          stableIngress: ingress-{{ .Values.deployment.name }}*/}}
