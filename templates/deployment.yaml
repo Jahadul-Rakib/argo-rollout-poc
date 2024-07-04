@@ -1,6 +1,6 @@
 {{- if .Values.deployment }}
 apiVersion: apps/v1
-kind: Rollout
+kind: Deployment
 metadata:
   {{- if .Values.deployment.annotations}}
   annotations:
@@ -15,24 +15,6 @@ metadata:
     {{ $key | quote }}: {{ $value | quote }}
     {{- end }}
 spec:
-  revisionHistoryLimit: 20
-  strategy:
-    canary:
-      steps:
-        - setWeight: 20
-        - pause: { }
-        - setWeight: 40
-        - pause: { duration: 10 }
-        - setWeight: 60
-        - pause: { duration: 10 }
-        - setWeight: 80
-        - pause: { duration: 10 }
-        - setWeight: 100
-      stableService: service-{{ .Values.deployment.name }}
-      canaryService: service-{{ .Values.deployment.name }}-rollout
-      trafficRouting:
-        nginx:
-          stableIngress: ingress-{{ .Values.deployment.name }}
   replicas: {{ .Values.deployment.replica.initial_replica }}
   selector:
     matchLabels:
