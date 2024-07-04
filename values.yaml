@@ -50,11 +50,11 @@ secret:
     additionalProp1: test-one
     additionalProp2: test-two
 ingress:
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
   hosts:
     - host: "rollout-test.95.216.201.183.nip.io"
       paths:
         - path: "/"
           port: 80
           path_type: "Prefix"
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
