@@ -27,7 +27,7 @@ deployment:
     additionalProp1: label1
     additionalProp2: label2
     additionalProp3: label3
-  name: test-nginx
+  name: test-nginx-rb
   namespace: default
   replica:
     initial_replica: 1
