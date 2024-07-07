@@ -36,7 +36,7 @@ deployment:
     scale_utilization_cpu: 50
     scale_utilization_ram: 50
   strategy:
-    type: canary #it should be conditional with canary or blue-green
+    type: canary-not #it should be conditional with canary or blue-green
     max_surge: 10%
     max_unavailable: 1
 kube_version: '1.19'

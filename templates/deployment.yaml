@@ -43,6 +43,16 @@ spec:
       trafficRouting:
         nginx:
           stableIngress: ingress-{{ .Values.deployment.name }}
+  {{else}}
+  strategy:
+    blueGreen:
+      activeService: service-{{ .Values.deployment.name }}
+      previewService: service-{{ .Values.deployment.name }}-rollout
+      previewReplicaCount: {{ .Values.deployment.replica.initial_replica }}
+      autoPromotionEnabled: true
+      autoPromotionSeconds: 1
+      scaleDownDelaySeconds: 30
+      abortScaleDownDelaySeconds: 30
   {{- end }}
   template:
     metadata:
