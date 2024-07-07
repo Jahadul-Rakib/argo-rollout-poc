@@ -8,7 +8,7 @@ deployment:
   container:
   - configmaps:
     - test-rnd-configmap
-    container_image: nginx:latest
+    container_image: nginx:1.27.0
     container_name: basic-api
     image_pull_policy: Always
     ports:
