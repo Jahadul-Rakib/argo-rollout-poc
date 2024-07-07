@@ -1,13 +1,13 @@
 configmap:
 - map_type: 'no'
-  name: test-rnd-configmap
+  name: test-rnd-configmap22
   values:
     additionalProp1: string1
     additionalProp2: string2
 deployment:
   container:
   - configmaps:
-    - test-rnd-configmap
+    - test-rnd-configmap22
     container_image: nginx:1.27.0
     container_name: basic-api
     image_pull_policy: Always
@@ -22,7 +22,7 @@ deployment:
         cpu: 200m
         ram: 400Mi
     secrets:
-    - secret-test-ns-rnd
+    - secret-test-ns-rnd22
   labels:
     additionalProp1: label1
     additionalProp2: label2
@@ -43,9 +43,9 @@ kube_version: '1.19'
 namespace:
   labels:
     rnd: niloy
-  name: test-ns-rnd
+  name: test-ns-rnd-22
 secret:
-- name: secret-test-ns-rnd
+- name: secret-test-ns-rnd22
   values:
     additionalProp1: test-one
     additionalProp2: test-two
