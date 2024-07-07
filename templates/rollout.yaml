@@ -7,9 +7,9 @@ spec:
   selector:
     matchLabels:
       app: {{ .Values.deployment.name }}
-      {{- range $key, $value := .Values.deployment.labels }}
-      {{ $key | quote }}: {{ $value | quote }}
-      {{- end }}
+{{/*      {{- range $key, $value := .Values.deployment.labels }}*/}}
+{{/*      {{ $key | quote }}: {{ $value | quote }}*/}}
+{{/*      {{- end }}*/}}
   replicas: 2
   revisionHistoryLimit: 5
   strategy:

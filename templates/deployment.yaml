@@ -36,9 +36,9 @@ spec:
       {{- end }}
       labels:
         app: {{ .Values.deployment.name }}
-        {{- range $key, $value := .Values.deployment.labels }}
-        {{ $key | quote }}: {{ $value | quote }}
-        {{- end }}
+{{/*        {{- range $key, $value := .Values.deployment.labels }}*/}}
+{{/*        {{ $key | quote }}: {{ $value | quote }}*/}}
+{{/*        {{- end }}*/}}
     spec:
       {{- if .Values.deployment.image_pull_secret }}
       imagePullSecrets:
