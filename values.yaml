@@ -30,9 +30,9 @@ deployment:
   name: test-nginx-rb
   namespace: default
   replica:
-    initial_replica: 2
+    initial_replica: 1
     max_replica: 10
-    min_replica: 2
+    min_replica: 1
     scale_utilization_cpu: 50
     scale_utilization_ram: 50
   strategy:
