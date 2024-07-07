@@ -19,14 +19,8 @@ spec:
   selector:
     matchLabels:
       app: {{ .Values.deployment.name }}
-  {{- if .Values.deployment.strategy }}
+  {{- if eq "canary" .Values.deployment.strategy.type }}
   strategy:
-{{/*    type: {{ .Values.deployment.strategy.type }}*/}}
-{{/*    rollingUpdate:*/}}
-{{/*      maxSurge: {{ .Values.deployment.strategy.max_surge }}*/}}
-{{/*      maxUnavailable: {{ .Values.deployment.strategy.max_unavailable }}*/}}
-    #argo-rollout
-    {{- if eq .Values.deployment.strategy "canary" }}
     canary:
       maxSurge: {{ .Values.deployment.strategy.max_surge }}
       maxUnavailable: {{ .Values.deployment.strategy.max_unavailable }}
@@ -35,7 +29,6 @@ spec:
       trafficRouting:
         nginx:
           stableIngress: ingress-{{ .Values.deployment.name }}
-    {{- end }}
   {{- end }}
   template:
     metadata:
