@@ -19,7 +19,7 @@ spec:
   selector:
     matchLabels:
       app: {{ .Values.deployment.name }}
-  {{- if eq "canary" .Values.deployment.strategy.type }}
+  {{- if .Values.deployment.strategy }}
   strategy:
     canary:
       maxSurge: {{ .Values.deployment.strategy.max_surge }}
