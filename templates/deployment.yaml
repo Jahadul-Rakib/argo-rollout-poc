@@ -1,6 +1,6 @@
 {{- if .Values.deployment }}
 apiVersion: apps/v1
-kind: Deployment
+kind: Rollout
 metadata:
   {{- if .Values.deployment.annotations}}
   annotations:
@@ -21,10 +21,17 @@ spec:
       app: {{ .Values.deployment.name }}
   {{- if .Values.deployment.strategy }}
   strategy:
-    type: {{ .Values.deployment.strategy.type }}
-    rollingUpdate:
-      maxSurge: {{ .Values.deployment.strategy.max_surge }}
-      maxUnavailable: {{ .Values.deployment.strategy.max_unavailable }}
+    #type: {{ .Values.deployment.strategy.type }}
+    #rollingUpdate:
+    #  maxSurge: {{ .Values.deployment.strategy.max_surge }}
+    #  maxUnavailable: {{ .Values.deployment.strategy.max_unavailable }}
+    #argo-rollout
+    canary:
+      stableService: service-{{ .Values.deployment.name }}
+      canaryService: service-{{ .Values.deployment.name }}-rollout
+      trafficRouting:
+        nginx:
+          stableIngress: ingress-{{ .Values.deployment.name }}
   {{- end }}
   template:
     metadata:
