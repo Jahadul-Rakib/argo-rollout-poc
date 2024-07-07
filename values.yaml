@@ -36,8 +36,8 @@ deployment:
     scale_utilization_cpu: 50
     scale_utilization_ram: 50
   strategy:
-    max_surge: 1
-    max_unavailable: 1
+    max_surge: 10%
+    max_unavailable: 10%
     type: RollingUpdate
 kube_version: '1.19'
 namespace:
