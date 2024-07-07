@@ -19,13 +19,13 @@ spec:
   selector:
     matchLabels:
       app: {{ .Values.deployment.name }}
-{{/*  {{- if .Values.deployment.strategy }}*/}}
-{{/*  strategy:*/}}
-{{/*    type: {{ .Values.deployment.strategy.type }}*/}}
-{{/*    rollingUpdate:*/}}
-{{/*      maxSurge: {{ .Values.deployment.strategy.max_surge }}*/}}
-{{/*      maxUnavailable: {{ .Values.deployment.strategy.max_unavailable }}*/}}
-{{/*  {{- end }}*/}}
+  {{- if .Values.deployment.strategy }}
+  strategy:
+    type: {{ .Values.deployment.strategy.type }}
+    rollingUpdate:
+      maxSurge: {{ .Values.deployment.strategy.max_surge }}
+      maxUnavailable: {{ .Values.deployment.strategy.max_unavailable }}
+  {{- end }}
   template:
     metadata:
       {{- if .Values.deployment.annotations}}
