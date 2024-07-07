@@ -1,5 +1,5 @@
 {{- if .Values.deployment }}
-apiVersion: argoproj.io/v1alpha1 #apps/v1
+apiVersion: argoproj.io/v1alpha1 #apps/v1 changed for argo rollout
 kind: Rollout
 metadata:
   {{- if .Values.deployment.annotations}}
@@ -26,12 +26,16 @@ spec:
 {{/*      maxSurge: {{ .Values.deployment.strategy.max_surge }}*/}}
 {{/*      maxUnavailable: {{ .Values.deployment.strategy.max_unavailable }}*/}}
     #argo-rollout
+    {{- if eq .Values.deployment.strategy "canary" }}
     canary:
+      maxSurge: {{ .Values.deployment.strategy.max_surge }}
+      maxUnavailable: {{ .Values.deployment.strategy.max_unavailable }}
       stableService: service-{{ .Values.deployment.name }}
       canaryService: service-{{ .Values.deployment.name }}-rollout
       trafficRouting:
         nginx:
           stableIngress: ingress-{{ .Values.deployment.name }}
+    {{- end }}
   {{- end }}
   template:
     metadata:
