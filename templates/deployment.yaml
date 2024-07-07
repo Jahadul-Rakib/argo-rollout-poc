@@ -19,7 +19,7 @@ spec:
   selector:
     matchLabels:
       app: {{ .Values.deployment.name }}
-  {{- if .Values.deployment.strategy }}
+  {{- if eq  .Values.deployment.strategy.type "canary"}}
   strategy:
     canary:
       steps:
@@ -35,7 +35,7 @@ spec:
         - setWeight: 80
         - pause:
             duration: 10
-        - setWeight: 80
+        - setWeight: 100
       maxSurge: {{ .Values.deployment.strategy.max_surge }}
       maxUnavailable: {{ .Values.deployment.strategy.max_unavailable }}
       stableService: service-{{ .Values.deployment.name }}
