@@ -35,6 +35,7 @@ spec:
         - setWeight: 80
         - pause:
             duration: 10
+        - setWeight: 80
       maxSurge: {{ .Values.deployment.strategy.max_surge }}
       maxUnavailable: {{ .Values.deployment.strategy.max_unavailable }}
       stableService: service-{{ .Values.deployment.name }}
