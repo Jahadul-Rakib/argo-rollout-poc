@@ -22,6 +22,19 @@ spec:
   {{- if .Values.deployment.strategy }}
   strategy:
     canary:
+      steps:
+        - setWeight: 20
+        - pause:
+            duration: 10
+        - setWeight: 40
+        - pause:
+            duration: 10
+        - setWeight: 60
+        - pause:
+            duration: 10
+        - setWeight: 80
+        - pause:
+            duration: 10
       maxSurge: {{ .Values.deployment.strategy.max_surge }}
       maxUnavailable: {{ .Values.deployment.strategy.max_unavailable }}
       stableService: service-{{ .Values.deployment.name }}
