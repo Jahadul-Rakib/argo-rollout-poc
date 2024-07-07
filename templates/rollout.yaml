@@ -4,6 +4,7 @@ metadata:
   name: {{ .Values.deployment.name }}
   namespace: {{ .Values.deployment.namespace }}
 spec:
+  replicas: 2
   revisionHistoryLimit: 20
   strategy:
     canary:
