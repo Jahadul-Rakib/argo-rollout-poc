@@ -4,11 +4,11 @@ metadata:
   name: {{ .Values.deployment.name }}
   namespace: {{ .Values.deployment.namespace }}
 spec:
+  selector:
+    matchLabels:
+      app: {{ .Values.deployment.name }}
   replicas: 2
-{{/*  selector:*/}}
-{{/*    matchLabels:*/}}
-{{/*      app: {{ .Values.deployment.name }}*/}}
-  revisionHistoryLimit: 20
+  revisionHistoryLimit: 5
   strategy:
     canary:
 {{/*      steps:*/}}
