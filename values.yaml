@@ -18,7 +18,7 @@ deployment:
         - test-rnd-configmap22
       volume:
         - name: "dummy"
-          mount_path: "/"
+          mount_path: "/test-rakib"
           size: 1Gi
       container_image: nginx:latest #nginx:1.27.0
       container_name: basic-api
