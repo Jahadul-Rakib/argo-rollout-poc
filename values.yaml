@@ -1,3 +1,13 @@
+pvc:
+  annotations:
+    pv.kubernetes.io/bind-completed: "yes"
+    pv.kubernetes.io/bound-by-controller: "yes"
+    volume.beta.kubernetes.io/storage-provisioner: rancher.io/local-path
+    volume.kubernetes.io/selected-node: kc-onboard-1
+    volume.kubernetes.io/storage-provisioner: rancher.io/local-path
+  access_mode:
+    - "ReadWriteOnce"
+  storage_class_name: "local-path"
 configmap:
   - map_type: 'no'
     name: test-rnd-configmap22
@@ -8,6 +18,10 @@ deployment:
   container:
     - configmaps:
         - test-rnd-configmap22
+      volume:
+        - name: "dummy"
+          mount_path: "/"
+          size: 10mi
       container_image: nginx:latest #nginx:1.27.0
       container_name: basic-api
       image_pull_policy: Always

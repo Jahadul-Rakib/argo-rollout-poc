@@ -116,7 +116,7 @@ spec:
         {{- range $index, $data := $data.volume }}
         - name: {{ $data.name }}
           persistentVolumeClaim:
-            claimName: {{ $data.name }}-{{ $index }}
+            claimName: {{ $data.name }}
         {{- end }}
       {{- end}}
       {{- end }}
