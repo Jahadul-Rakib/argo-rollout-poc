@@ -1,7 +1,5 @@
 pvc:
   annotations:
-#    pv.kubernetes.io/bind-completed: "yes"
-#    pv.kubernetes.io/bound-by-controller: "yes"
     volume.beta.kubernetes.io/storage-provisioner: rancher.io/local-path
     volume.kubernetes.io/selected-node: kc-onboard-1
     volume.kubernetes.io/storage-provisioner: rancher.io/local-path
