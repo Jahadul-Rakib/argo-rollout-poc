@@ -21,7 +21,7 @@ deployment:
       volume:
         - name: "dummy"
           mount_path: "/"
-          size: 10mi
+          size: 1Gi
       container_image: nginx:latest #nginx:1.27.0
       container_name: basic-api
       image_pull_policy: Always
